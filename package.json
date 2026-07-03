@@ -1,0 +1,24 @@
+{
+  "name": "aulas-node-backend",
+  "version": "0.0.1",
+  "description": "Aulas do professor Renan no módulo 2 do curso técnico de informática para internet",
+  "homepage": "https://github.com/ellyteo/aulas-node-backend#readme",
+  "bugs": {
+    "url": "https://github.com/ellyteo/aulas-node-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ellyteo/aulas-node-backend.git"
+  },
+  "license": "ISC",
+  "author": "Gabriélly Teodoro",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
