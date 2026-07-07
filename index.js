@@ -23,10 +23,10 @@ app.get("/api/pessoa/:id", (req, res) => {
 
     const pessoa = bancoDeDados.find(it => it.id == id)
 
-if(!pessoa) {
-    res.send({ message: "Pessoa não encontrada"})
-    return
-}
+    if (!pessoa) {
+        res.send({ message: "Pessoa não encontrada" })
+        return
+    }
 
     res.send({ pessoa })
 })
@@ -49,8 +49,20 @@ app.get("/api/pessoa", (req, res) => {
 })
 
 // ALTERAR
+app.get("/api/alterar/:id", (req, res) => {
+    const id = req.params.id
 
+    const pessoa = bancoDeDados.find(it => it.id == id)
 
+    if (!pessoa) {
+        res.send({ message: "Pessoa não encontrada" })
+        return
+    }
+
+    
+
+    res.send({ pessoa })
+})
 
 
 
