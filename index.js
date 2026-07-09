@@ -87,8 +87,52 @@ app.get("/api/alterar/:id", (req, res) => {
 
 // res.send({resultado})
 
-// })
+//--------------------------------- Exercícios ---------------------------------//
 
+/////////////////////////////////// Ex01 ///////////////////////////////////
+
+app.get("/api/v1/somar", (req, res) => {
+    const {num1, num2} = req.query
+    const resultado = Number(num1) + Number(num2)
+ 
+    res.status(200).send({ message: resultado })
+})
+
+/////////////////////////////////// Ex02 ///////////////////////////////////
+
+app.get("/api/v1/horas", (req, res) => {
+    const {valor, horas} = req.query
+    const resultado = Number(valor) * Number(horas)
+
+    res.status(200).send({ message: resultado })
+})
+
+/////////////////////////////////// Ex03 ///////////////////////////////////
+
+app.get("/api/v1/immc", (req, res) => {
+    const {peso1, peso2, peso3, peso4, peso5} = req.query
+    const resultado = (Number(peso1) + Number(peso2) + Number(peso3) + Number(peso4) + Number(peso5)) / 5
+
+    res.status(200).send({ message: resultado })
+})
+
+/////////////////////////////////// Ex04 ///////////////////////////////////
+
+app.get("api/v1/celsius", (req, res) => {
+    const temperatura = req.query
+    const resultado = ( 9 * temperatura + 160 ) / 
+    
+    res.status(200).send({ message: resultado })
+})
+
+/////////////////////////////////// Ex05 ///////////////////////////////////
+
+app.get("api/v1/distancia", (req, res) => {
+    const milhas = req.query
+    const resultado = resultado * 1.60934
+
+    res.status(200).send({ message: resultado })
+})
 
 // Inicia o servidor Express na porta 3000 e define uma função de retorno chamada
 app.listen(3000, () => {
