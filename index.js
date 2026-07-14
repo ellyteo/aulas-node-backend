@@ -118,18 +118,33 @@ app.get("/api/v1/immc", (req, res) => {
 
 /////////////////////////////////// Ex04 ///////////////////////////////////
 
-app.get("api/v1/celsius", (req, res) => {
-    const temperatura = req.query
-    const resultado = ( 9 * temperatura + 160 ) / 
+app.get("/api/v1/celsius", (req, res) => {
+    const {temperatura} = req.query
+    const resultado = ( 9 * Number(temperatura) + 160 ) / 
     
     res.status(200).send({ message: resultado })
 })
 
 /////////////////////////////////// Ex05 ///////////////////////////////////
 
-app.get("api/v1/distancia", (req, res) => {
-    const milhas = req.query
-    const resultado = resultado * 1.60934
+app.get("/api/v1/distancia", (req, res) => {
+    const {milhas} = req.query
+    const resultado = Number(milhas) * 1.60934
+
+    res.status(200).send({ message: resultado })
+})
+
+/////////////////////////////////// Ex06 ///////////////////////////////////
+
+app.get("/api/v1/evento", (req, res) => {
+    const {seg} = req.query
+    const hr = Number(seg) / 3600
+    const min = Number(seg) /60
+    const resultado = {
+        seg: Number(seg),
+        hr,
+        min
+    }
 
     res.status(200).send({ message: resultado })
 })
