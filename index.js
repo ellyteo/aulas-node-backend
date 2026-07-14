@@ -91,8 +91,8 @@ app.get("/api/alterar/:id", (req, res) => {
 
 /////////////////////////////////// Ex01 ///////////////////////////////////
 
-app.get("/api/v1/somar", (req, res) => {
-    const {num1, num2} = req.query
+app.post("/api/v1/somar", (req, res) => {
+    const {num1, num2} = req.body
     const resultado = Number(num1) + Number(num2)
  
     res.status(200).send({ message: resultado })
@@ -100,8 +100,8 @@ app.get("/api/v1/somar", (req, res) => {
 
 /////////////////////////////////// Ex02 ///////////////////////////////////
 
-app.get("/api/v1/horas", (req, res) => {
-    const {valor, horas} = req.query
+app.post("/api/v1/horas", (req, res) => {
+    const {valor, horas} = req.body
     const resultado = Number(valor) * Number(horas)
 
     res.status(200).send({ message: resultado })
@@ -109,8 +109,8 @@ app.get("/api/v1/horas", (req, res) => {
 
 /////////////////////////////////// Ex03 ///////////////////////////////////
 
-app.get("/api/v1/immc", (req, res) => {
-    const {peso1, peso2, peso3, peso4, peso5} = req.query
+app.post("/api/v1/immc", (req, res) => {
+    const {peso1, peso2, peso3, peso4, peso5} = req.body
     const resultado = (Number(peso1) + Number(peso2) + Number(peso3) + Number(peso4) + Number(peso5)) / 5
 
     res.status(200).send({ message: resultado })
@@ -118,8 +118,8 @@ app.get("/api/v1/immc", (req, res) => {
 
 /////////////////////////////////// Ex04 ///////////////////////////////////
 
-app.get("/api/v1/celsius", (req, res) => {
-    const {temperatura} = req.query
+app.post("/api/v1/celsius", (req, res) => {
+    const {temperatura} = req.body
     const resultado = ( 9 * Number(temperatura) + 160 ) / 
     
     res.status(200).send({ message: resultado })
@@ -127,8 +127,8 @@ app.get("/api/v1/celsius", (req, res) => {
 
 /////////////////////////////////// Ex05 ///////////////////////////////////
 
-app.get("/api/v1/distancia", (req, res) => {
-    const {milhas} = req.query
+app.post("/api/v1/distancia", (req, res) => {
+    const {milhas} = req.body
     const resultado = Number(milhas) * 1.60934
 
     res.status(200).send({ message: resultado })
@@ -136,8 +136,8 @@ app.get("/api/v1/distancia", (req, res) => {
 
 /////////////////////////////////// Ex06 ///////////////////////////////////
 
-app.get("/api/v1/evento", (req, res) => {
-    const {seg} = req.query
+app.post("/api/v1/evento", (req, res) => {
+    const {seg} = req.body
     const hr = Number(seg) / 3600
     const min = Number(seg) /60
     const resultado = {
