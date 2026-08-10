@@ -37,7 +37,16 @@ router.post("/criar", (req, res) => {
 
 // Alterar
 router.post("/alterar", (req, res) => {
+    const id = req.body.id
+    const { marca } = req.query
+    const carro = carros.find(it => it.id === id)
 
+    if(!carro) {
+        res.send({ message: "Carro não encontrado"})
+    return
+    }
+    carro.marca = marca
+    res.send({ message: "alterado com sucesso"})
 })
 
 // Deletar
