@@ -1,61 +1,21 @@
 import express from 'express'
-import carros from '../repository/carro.js'
+import ControllerCarro from '../controller/carro.js'
 
 const router = express.Router()
 
 // Buscar todos
-router.get("/buscar", (req, res) => {
-    res.send({ message: carros })
-})
+router.get("/buscar", ControllerCarro.Buscar )
 
 // Buscar um
-router.get("/detalhe/:id", (req, res) => {
-    const id = req.params.id
-
-    const carro = carros.find(it => it.id === id)
-
-    if (!id ) {
-        res.send({ message: "Carro não encontrado!" })
-        return
-    }
-    res.send({ message: carro })
-
-})
+router.get("/detalhe/:id", ControllerCarro.Detalhe)
 
 // Criar
-router.post("/criar", (req, res) => {
-    const { id, marca, ano } = req.body
-
-    if (!id || !marca || !ano) {
-        res.send({ message: "Favor informar todos os dados!" })
-        return
-    }
-
-    carros.push({ id, marca, ano })
-    res.send({ message: "Cadastro com sucesso" })
-})
+router.post("/criar", ControllerCarro.Criar)
 
 // Alterar
-router.post("/alterar", (req, res) => {
-    const id = req.body.id
-    const { marca } = req.query
-    const carro = carros.find(it => it.id === id)
-
-    if(!carro) {
-        res.send({ message: "Carro não encontrado"})
-    return
-    }
-    carro.marca = marca
-    res.send({ message: "alterado com sucesso"})
-})
+router.post("/alterar", ControllerCarro.Alterar)
 
 // Deletar
-router.post("deletar", (req, res) => {
-    const id = req.body.id
-
-    carros.splice(it => it.id === id, 1)
-
-    res.send({ message: "Deletado!"})
-})
+router.post("/deletar", ControllerCarro.Deletar)
 
 export default router

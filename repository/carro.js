@@ -1,3 +1,3 @@
-const carros = []
+const RepositoryCarro = []
 
-export default carros
+export default RepositoryCarro
