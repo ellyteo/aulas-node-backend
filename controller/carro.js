@@ -46,14 +46,10 @@ class ControllerCarro {
     Alterar(req, res) {
         try {
             const id = req.params.id
-            const { marca } = req.query
-            const carro = carros.find(it => it.id === id)
+            const { marca, ano } = req.query
+            
+            ServiceCarro.Alterar(marca, ano)
 
-            if (!carro) {
-                res.send({ message: "Carro não encontrado" })
-                return
-            }
-            carro.marca = marca
             res.send({ message: "alterado com sucesso" })
         } catch (error) {
             res.status(500).send({

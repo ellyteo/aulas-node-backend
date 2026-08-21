@@ -19,6 +19,7 @@ class ServiceCarro {
 
         return carro
     }
+
     // Função(parametros)
     Criar(id, marca, ano) {
         if (!id || !marca || !ano) {
@@ -29,14 +30,27 @@ class ServiceCarro {
         return { id, marca, ano }
     }
 
-    Alterar() { }
+    Alterar(id) {
+        if (!id) {
+            throw new Error("Favor informar o ID")
+        }
+        const carro = RepositoryCarro.find(it => it.id === id)
+
+        if (!carro) {
+            throw new Error("Carro não encontrado")
+        }
+        carro.marca = marca
+        carro.ano = ano
+
+        return carro
+    }
 
     Deletar(id) {
         if (!id) {
             throw new Error("Favor informar o ID")
         }
         RepositoryCarro.splice(it => it.id === id, 1)
-    
+
         return id
     }
 
