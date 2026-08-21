@@ -13,9 +13,9 @@ router.get("/detalhe/:id", ControllerCarro.Detalhe)
 router.post("/criar", ControllerCarro.Criar)
 
 // Alterar
-router.post("/alterar", ControllerCarro.Alterar)
+router.put("/alterar/:id", ControllerCarro.Alterar)
 
 // Deletar
-router.post("/deletar", ControllerCarro.Deletar)
+router.delete("/deletar/:id", ControllerCarro.Deletar)
 
 export default router

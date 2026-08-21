@@ -45,7 +45,7 @@ class ControllerCarro {
 
     Alterar(req, res) {
         try {
-            const id = req.body.id
+            const id = req.params.id
             const { marca } = req.query
             const carro = carros.find(it => it.id === id)
 
@@ -64,7 +64,7 @@ class ControllerCarro {
 
     Deletar(req, res) {
         try {
-            const id = req.body.id
+            const id = req.params.id
 
             ServiceCarro.Deletar(id)
 
