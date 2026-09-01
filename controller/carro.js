@@ -3,9 +3,9 @@ import ServiceCarro from '../service/carro.js'
 class ControllerCarro {
 
     // Recebimento e saída das informações
-    Buscar(_, res) {
+    async Buscar(_, res) {
         try {
-            const carros = ServiceCarro.Buscar()
+            const carros = await ServiceCarro.Buscar()
             res.send({ message: carros })
         } catch (error) {
             res.status(500).send({
@@ -14,11 +14,11 @@ class ControllerCarro {
         }
     }
 
-    Detalhe(req, res) {
+    async Detalhe(req, res) {
         try {
             const id = req.params.id
 
-            const carro = ServiceCarro.Detalhe(id)
+            const carro = await ServiceCarro.Detalhe(id)
 
             res.send({ message: carro })
         } catch (error) {
@@ -29,11 +29,11 @@ class ControllerCarro {
 
     }
 
-    Criar(req, res) {
+    async Criar(req, res) {
         try {
             const { id, marca, ano } = req.body
 
-            ServiceCarro.Criar(id, marca, ano)
+            await ServiceCarro.Criar(id, marca, ano)
 
             res.send({ message: "Cadastro com sucesso" })
         } catch (error) {
