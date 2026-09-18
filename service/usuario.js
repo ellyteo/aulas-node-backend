@@ -16,7 +16,7 @@ class ServiceUsuario {
             throw new Error("Favor informar o ID")
         }
 
-        await RepositoreUsuario.FindById(id)
+        const usuario = await RepositoreUsuario.FindById(id)
 
         if (!usuario) {
             throw new Error(`ID ${id} do usuario não encontrado`)
@@ -30,7 +30,10 @@ class ServiceUsuario {
         if (!email || !senha) {
             throw new Error("Favor informar todos os dados!")
         }
-        const usuario = await RepositoreUsuario.Create(email, senha)
+
+        const senhaCripto = await bcrypt.hash(senha, 12)
+
+        const usuario = await RepositoreUsuario.Create(email, senhaCripto)
 
         return usuario
     }
@@ -40,7 +43,9 @@ class ServiceUsuario {
             throw new Error("Favor informar o ID")
         }
 
-        const usuarioAlterar = await RepositoreUsuario.Update(id, email, senha)
+        const senhaCripto = !senha ? undefined : await bcrypt.hash(senha, 12)
+
+        const usuarioAlterar = await RepositoreUsuario.Update(id, email, senhaCripto)
 
         return usuarioAlterar
     }
@@ -57,19 +62,19 @@ class ServiceUsuario {
 
     async Login(email, senha) {
         if (!email || !senha) {
-            throw new Error("Email ou senha inválidos")
+            throw new Error("Email ou senha inválido")
         }
 
-        const usuario = await RepositoreUsuario.FinddByEmail(email)
+        const usuario = await RepositoreUsuario.FindByEmail(email)
 
         if (!usuario) {
-            throw new Error("Email ou senha inválidos")
+            throw new Error("Email ou senha inválido")
         }
 
         if (
             !(await bcrypt.compare(String(senha), usuario.senha))
         ) {
-            throw new Error("Email ou senha inválidos")
+            throw new Error("Email ou senha inválido")
         }
 
         return jwt.sign(

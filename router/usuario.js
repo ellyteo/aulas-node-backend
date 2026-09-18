@@ -5,7 +5,7 @@ import authMiddleware from '../middleware/auth.js'
 const router = express.Router()
 
 
-router.post("/login", authMiddleware, ControllerUsuario.Login)
+router.post("/login", ControllerUsuario.Login)
 // Buscar todos
 router.get("/buscar", authMiddleware, ControllerUsuario.Buscar )
 
