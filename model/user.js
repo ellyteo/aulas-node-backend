@@ -1,21 +1,29 @@
+import { Sequelize } from "sequelize"
 import database from "../config/database.js"
 
-class Usuario {
+class User {
     constructor() {
-        this.model = database.db.define("usuarios", {
+        this.model = database.db.define("user", {
             id: {
                 type: database.db.Sequelize.INTEGER,
                 primaryKey: true,
                 autoIncrement: true
             },
+            nome: {
+                type: database.db.Sequelize.STRING,
+                allowNull: false
+            },
             email: {
                 type: database.db.Sequelize.STRING,
-                unique: true
+                allowNull: false
             },
             senha: {
                 type: database.db.Sequelize.STRING,
+                allowNull: false
             }
         })
     }
+
 }
-export default new Usuario().model
+
+export default new User().model
